@@ -6,24 +6,26 @@ import {
   Title,
   FilterProducts,
   TopBar,
-  ProductsGroupList,
+  ProductsGroupList
 } from '@/app/shared/components/shared'
 import { prisma } from '@/prisma/prisma-client'
 
 const Home = async () => {
   const categ = await prisma.category.findMany({
-    include: { 
+    include: {
       products: {
         include: {
           ingredients: true,
           items: true
         }
       }
-    } 
+    }
   })
   console.log(categ)
 
-const filterCategory = categ?.filter((category) => category?.products.length > 0)
+  const filterCategory = categ?.filter(
+    (category) => category?.products.length > 0
+  )
   return (
     <main className="min-h-screen bg-white rounded-3xl">
       <Header />
@@ -39,15 +41,18 @@ const filterCategory = categ?.filter((category) => category?.products.length > 0
             <FilterProducts />
           </div>
 
-          <div className='w-full'>
-            {filterCategory?.map((category) => categ.length > 0 && (
-              <ProductsGroupList
-                key={category.id}
-                title={category.name}
-                items={category.products}
-                categoryId={category.id}
-              />
-            ))}
+          <div className="w-full">
+            {filterCategory?.map(
+              (category) =>
+                categ.length > 0 && (
+                  <ProductsGroupList
+                    key={category.id}
+                    title={category.name}
+                    items={category.products}
+                    categoryId={category.id}
+                  />
+                )
+            )}
           </div>
         </div>
       </Container>

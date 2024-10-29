@@ -7,7 +7,7 @@ export const useCategories = () => {
     queryKey: ['category'],
     queryFn: async () => getAllCategories(),
     // Enable refetching when the cache expires
-    staleTime: 1000 * 60 * 10,
+    staleTime: 1000 * 60 * 10
     // refetchInterval: 60 * 60 * 1000, // 1 hour
   })
 

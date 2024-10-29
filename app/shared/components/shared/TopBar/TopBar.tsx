@@ -10,7 +10,11 @@ interface ITopBarProps extends IProps {
   isLoading?: boolean
 }
 
-export const TopBar: React.FC<ITopBarProps> = ({ className,categories, isLoading}) => {
+export const TopBar: React.FC<ITopBarProps> = ({
+  className,
+  categories,
+  isLoading
+}) => {
   return (
     <div
       className={cn(

@@ -11,7 +11,7 @@ export const ProductCard: FC<IProps> = ({
   price,
   imageUrl,
   ingredients,
-  className,
+  className
 }) => {
   console.log('sddss', ingredients)
   return (

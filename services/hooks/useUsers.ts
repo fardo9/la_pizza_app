@@ -4,7 +4,7 @@ import { getAllUsers } from '../users'
 export const useUsers = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['users'],
-    queryFn: async () => getAllUsers(),
+    queryFn: async () => getAllUsers()
   })
 
   return { users: data, isLoading }

@@ -6,11 +6,11 @@ import TanStackProvider from '@/providers/TanStackProvider'
 const nunito = Nunito({
   subsets: ['cyrillic'],
   variable: '--font-nunito',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700', '800', '900']
 })
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {

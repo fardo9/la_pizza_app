@@ -13,13 +13,13 @@ export const ProductsGroupList: FC<IProps> = ({
   items,
   listClassName,
   categoryId,
-  className,
+  className
 }) => {
   console.log('items', items)
   const setActiveCategory = useCategoryStore((state) => state.setActiveId)
   const intersectionRef = useRef<HTMLDivElement>(null)
   const intersection = useIntersection(intersectionRef, {
-    threshold: 0.4,
+    threshold: 0.4
   })
   useEffect(() => {
     if (intersection?.isIntersecting) {

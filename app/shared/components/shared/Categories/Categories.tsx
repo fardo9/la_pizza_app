@@ -15,7 +15,11 @@ interface ICatogories extends IProps {
   isLoading?: boolean
 }
 
-export const Categories: React.FC<ICatogories> = ({ className, items, isLoading }) => {
+export const Categories: React.FC<ICatogories> = ({
+  className,
+  items,
+  isLoading
+}) => {
   const categoryActiveId = useCategoryStore((state) => state.activeId)
 
   return (
@@ -34,7 +38,7 @@ export const Categories: React.FC<ICatogories> = ({ className, items, isLoading 
           ))}
         </div>
       ) : (
-         items?.map(({ name, id }) => (
+        items?.map(({ name, id }) => (
           <Link
             key={name}
             className={cn(

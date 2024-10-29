@@ -6,7 +6,7 @@ export const useProducts = (query: string, enabled: boolean) => {
     queryKey: ['products', query],
     queryFn: () => search(query),
     enabled: enabled,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 5
   })
 
   return { products: data, isLoading, isError, error }

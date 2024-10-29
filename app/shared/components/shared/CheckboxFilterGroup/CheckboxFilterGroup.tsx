@@ -19,7 +19,7 @@ export const CheckboxFilterGroup: FC<ICheckboxFilterGroupProps> = ({
   error,
   onClickCheckbox,
   selected,
-  name,
+  name
 }) => {
   const [showAll, setShowAll] = useState(false)
   const [searchValue, setSearchValue] = useState('')

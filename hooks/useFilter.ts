@@ -1,6 +1,6 @@
 import {
   IPriceRangeProps,
-  IReturnFilterProps,
+  IReturnFilterProps
 } from '@/app/shared/components/shared/types'
 import { useMemo, useState } from 'react'
 import { useSet } from 'react-use'
@@ -32,7 +32,7 @@ export const useFilter = (): IReturnFilterProps => {
 
   const [prices, setPrices] = useState<IPriceRangeProps>({
     priceFrom: Number(searchParams.get('priceFrom')) || undefined,
-    priceTo: Number(searchParams.get('priceTo')) || undefined,
+    priceTo: Number(searchParams.get('priceTo')) || undefined
   })
 
   const handlePriceRangeChange = (
@@ -41,7 +41,7 @@ export const useFilter = (): IReturnFilterProps => {
   ) => {
     setPrices((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }))
   }
 
@@ -54,8 +54,8 @@ export const useFilter = (): IReturnFilterProps => {
       setPrices: handlePriceRangeChange,
       setPizzaTypes: togglePizzaTypes,
       setSizes: toggleSizes,
-      setSelectedIngredients: toggleIngredients,
+      setSelectedIngredients: toggleIngredients
     }),
-    [sizes, pizzaTypes, selectedIngredients, prices],
-  );
+    [sizes, pizzaTypes, selectedIngredients, prices]
+  )
 }

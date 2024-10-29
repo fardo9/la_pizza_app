@@ -7,5 +7,5 @@ export { Slider } from '@/app/shared/components/ui/slider'
 export {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/app/shared/components/ui/popover'

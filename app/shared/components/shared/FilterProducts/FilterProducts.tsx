@@ -18,7 +18,7 @@ export const FilterProducts: FC<IProps> = ({ className }) => {
   const items =
     ingredients?.map((item: Ingredient) => ({
       value: String(item.id),
-      text: item.name,
+      text: item.name
     })) || []
 
   const updatePrices = (prices: number[]) => {
@@ -55,7 +55,7 @@ export const FilterProducts: FC<IProps> = ({ className }) => {
           filter.pizzaTypes,
           [
             { text: 'Thin', value: '1' },
-            { text: 'Traditional', value: '2' },
+            { text: 'Traditional', value: '2' }
           ],
           filter.setPizzaTypes
         )}
@@ -67,7 +67,7 @@ export const FilterProducts: FC<IProps> = ({ className }) => {
           [
             { text: '20 см', value: '20' },
             { text: '30 см', value: '30' },
-            { text: '40 см', value: '40' },
+            { text: '40 см', value: '40' }
           ],
           filter.setSizes
         )}
@@ -115,7 +115,7 @@ export const FilterProducts: FC<IProps> = ({ className }) => {
               step={10}
               value={[
                 filter.prices.priceFrom ?? 0,
-                filter.prices.priceTo ?? 300,
+                filter.prices.priceTo ?? 300
               ]}
               onValueChange={updatePrices}
             />
