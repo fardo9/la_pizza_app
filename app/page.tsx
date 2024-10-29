@@ -8,8 +8,22 @@ import {
   TopBar,
   ProductsGroupList,
 } from '@/app/shared/components/shared'
+import { prisma } from '@/prisma/prisma-client'
 
-const Home = () => {
+const Home = async () => {
+  const categ = await prisma.category.findMany({
+    include: { 
+      products: {
+        include: {
+          ingredients: true,
+          items: true
+        }
+      }
+    } 
+  })
+  console.log(categ)
+
+const filterCategory = categ?.filter((category) => category?.products.length > 0)
   return (
     <main className="min-h-screen bg-white rounded-3xl">
       <Header />
@@ -17,66 +31,23 @@ const Home = () => {
         <Title text="All pizzas" size="lg" className="font-extrabold" />
       </Container>
 
-      <TopBar />
+      <TopBar categories={filterCategory} isLoading={false} />
 
       <Container className="mt-10 pb-14">
-        <div className="flex gap-[60px]">
+        <div className="flex gap-[80px]">
           <div className="w-[250px]">
             <FilterProducts />
           </div>
 
-          {/* Product List */}
-          <div>
-            <ProductsGroupList
-              title={'Pizzas'}
-              items={[
-                {
-                  id: 1,
-                  name: 'Pizza 1',
-                  imageUrl: '/assets/images/la-pyecz.webp',
-                  items: [{ price: 19.99 }],
-                  ingredients: [],
-                },
-                {
-                  id: 2,
-                  name: 'Pizza 2',
-                  imageUrl: '/assets/images/la-pyecz.webp',
-                  items: [{ price: 19.99 }],
-                  ingredients: [],
-                },
-                {
-                  id: 3,
-                  name: 'Pizza 3',
-                  imageUrl: '/assets/images/la-pyecz.webp',
-                  items: [{ price: 19.99 }],
-                  ingredients: [],
-                },
-              ]}
-              categoryId={1}
-            />
-
-            <ProductsGroupList
-              className="mt-20"
-              title={'Appetizer'}
-              items={[
-                { id: 1, name: 'Pizza 1', imageUrl: '/', ingredients: [] },
-                { id: 2, name: 'Pizza 2', imageUrl: '/', ingredients: [] },
-                { id: 3, name: 'Pizza 3', imageUrl: '/', ingredients: [] },
-              ]}
-              categoryId={3}
-            />
-
-<ProductsGroupList
-              className="mt-20"
-              title={'Drinks'}
-              items={[
-                { id: 1, name: 'Drink 1', imageUrl: '/', ingredients: [] },
-                { id: 2, name: 'Drink 2', imageUrl: '/', ingredients: [] },
-                { id: 3, name: 'Drink 3', imageUrl: '/', ingredients: [] },
-                { id: 4, name: 'Drink 3', imageUrl: '/', ingredients: [] },
-              ]}
-              categoryId={6}
-            />
+          <div className='w-full'>
+            {filterCategory?.map((category) => categ.length > 0 && (
+              <ProductsGroupList
+                key={category.id}
+                title={category.name}
+                items={category.products}
+                categoryId={category.id}
+              />
+            ))}
           </div>
         </div>
       </Container>

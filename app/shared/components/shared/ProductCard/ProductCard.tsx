@@ -13,7 +13,7 @@ export const ProductCard: FC<IProps> = ({
   ingredients,
   className,
 }) => {
-  // console.log('sddss', ingredients)
+  console.log('sddss', ingredients)
   return (
     <div className={className}>
       <Link href={`/product/${id}`}>

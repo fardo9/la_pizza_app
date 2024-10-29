@@ -15,19 +15,15 @@ export const ProductsGroupList: FC<IProps> = ({
   categoryId,
   className,
 }) => {
+  console.log('items', items)
   const setActiveCategory = useCategoryStore((state) => state.setActiveId)
   const intersectionRef = useRef<HTMLDivElement>(null)
   const intersection = useIntersection(intersectionRef, {
     threshold: 0.4,
   })
-
   useEffect(() => {
     if (intersection?.isIntersecting) {
-      console.log(`Intersection detected with - ${title}, ${categoryId}`)
       setActiveCategory(categoryId)
-      // Trigger your action here, for example, fetch more data or update state.
-      // Example: fetchMoreData(categoryId)
-      // Example: dispatch(updateState({ isLoading: false }))
     }
   }, [intersection?.intersectionRect])
 

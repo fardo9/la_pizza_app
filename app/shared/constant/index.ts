@@ -1,6 +1,6 @@
 interface Category {
-  id: number;
-  name: string;
+  id: number
+  name: string
 }
 
 export const categories: Category[] = [
@@ -11,4 +11,4 @@ export const categories: Category[] = [
   { id: 5, name: 'Coffee' },
   { id: 6, name: 'Drinks' },
   { id: 7, name: 'Desserts' },
-];
+]

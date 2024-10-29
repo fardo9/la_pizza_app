@@ -1,45 +1,49 @@
 'use client'
 
 import React, { FC, useState } from 'react'
-import { FilterCheckbox } from '../filter-checkbox'
+import { FilterCheckbox } from '../FilterCheckbox/FilterCheckbox'
 import { Input } from '../../ui'
 import { Skeleton } from '../../ui/skeleton'
-import { IProps } from './types'
+import { ICheckboxFilterGroupProps } from '../types'
+import { Value } from '@radix-ui/react-select'
 
-export const CheckboxFilterGroup: FC<IProps> = ({
+export const CheckboxFilterGroup: FC<ICheckboxFilterGroupProps> = ({
   title,
   items,
   defaultItems,
   limit = 5,
   searchInputPlaceholder = 'Search...',
   className,
-  loading,
+  isLoading,
+  isError,
+  error,
   onClickCheckbox,
   selected,
   name,
 }) => {
   const [showAll, setShowAll] = useState(false)
   const [searchValue, setSearchValue] = useState('')
+  const [filteredItems, setFilteredItems] = useState(items)
 
   const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
+    const value = e.target.value
+    setSearchValue(value)
+
+    const updatedFilteredItems = items.filter(
+      (item) =>
+        item.text.toLowerCase().includes(value.toLowerCase()) ||
+        item.value === value
+    )
+    setFilteredItems(updatedFilteredItems)
   }
 
-  console.log('searchValue', !!searchValue)
   const handleShowHideButton = () => {
-    // setSearchValue('')
     setShowAll(!showAll)
   }
 
-  const list = showAll
-    ? items?.filter(
-        (item) =>
-          item.text.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.value === searchValue
-      )
-    : (defaultItems || items).slice(0, limit)
+  const list = showAll ? filteredItems : (defaultItems || items).slice(0, limit)
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className={className}>
         <p className="font-bold mb-3">{title}</p>
@@ -55,6 +59,10 @@ export const CheckboxFilterGroup: FC<IProps> = ({
     )
   }
 
+  if (isError) {
+    return <div>Error: {error.message}</div>
+  }
+
   return (
     <div className={className}>
       <p className="font-bold mb-3">{title}</p>
@@ -62,6 +70,7 @@ export const CheckboxFilterGroup: FC<IProps> = ({
       {showAll && (
         <div className="mb-5">
           <Input
+            value={searchValue}
             placeholder={searchInputPlaceholder}
             className="bg-gray-50 border-none"
             onChange={onChangeSearchInput}
@@ -75,10 +84,10 @@ export const CheckboxFilterGroup: FC<IProps> = ({
             key={item.value}
             text={item.text}
             value={item.value}
-            checked={false}
+            checked={selected?.has(item.value)}
             name={name}
             endAdornment={item.endAdornment}
-            onCheckedChange={() => {}}
+            onCheckedChange={() => onClickCheckbox?.(item.value)}
           />
         ))}
       </div>
