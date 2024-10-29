@@ -1,14 +1,6 @@
 import React from 'react'
-import { Checkbox } from '../ui/checkbox'
-
-export interface FilterChecboxProps {
-  text: string
-  value: string
-  endAdornment?: React.ReactNode
-  onCheckedChange?: (checked: boolean) => void
-  checked?: boolean
-  name?: string
-}
+import { Checkbox } from '../../ui/checkbox'
+import { FilterChecboxProps } from '../types'
 
 export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
   text,
@@ -16,7 +8,7 @@ export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
   endAdornment,
   onCheckedChange,
   checked,
-  name,
+  name
 }) => {
   return (
     <div className="flex items-center space-x-2">
