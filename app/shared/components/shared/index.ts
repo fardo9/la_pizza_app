@@ -10,3 +10,4 @@ export { CheckboxFilterGroup } from '@/app/shared/components/shared/CheckboxFilt
 export { ProductsGroupList } from '@/app/shared/components/shared/ProductsGroupList/ProductsGroupList'
 export { Categories } from '@/app/shared/components/shared/Categories/Categories'
 export { SearchInput } from '@/app/shared/components/shared/SearchInput/SearchInput'
+export { ProductImage } from '@/app/shared/components/shared/ProductImage/ProductImage'

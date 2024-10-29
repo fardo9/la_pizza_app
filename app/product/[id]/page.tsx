@@ -1,10 +1,37 @@
-import React from 'react'
+'use client'
 
-const ProductDetails = ({ params: { id } }: { params: { id: string } }) => {
-  console.log('params', id) // { id: '123' }
+import React, { FC } from 'react'
+import { Container, ProductImage, Title } from '@/app/shared/components/shared'
+import Tabs from '@/app/shared/components/shared/Tabs/Tabs'
+import { useProductByID } from '@/services/hooks/useProductID'
 
-  // Fetch product details from API using the provided ID
-  return <div>ProductDetails {id}</div>
+const ProductDetails: FC<any> = ({ params }: { params: any }) => {
+  const { product } = useProductByID(params.id)
+
+  return (
+    <Container className="flex my-10">
+      <div className="flex flex-1">
+        <ProductImage imageUrl={product?.imageUrl} size={40} />
+      </div>
+      <div className="w-[490px] bg-[#FCFCFC] p-7">
+        <Title text={product?.name ?? ''} size="lg" className="mb-4" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+          provident expedita iusto? Vero sed asperiores error eum id rem, vel
+          non consequatur nesciunt quis excepturi repudiandae iste enim
+          obcaecati minus.
+        </p>
+        <Tabs
+          selectedValue="2"
+          items={[
+            { name: 'Small', value: '1' },
+            { name: 'Medium', value: '2' },
+            { name: 'Large', value: '3' }
+          ]}
+        />
+      </div>
+    </Container>
+  )
 }
 
 export default ProductDetails

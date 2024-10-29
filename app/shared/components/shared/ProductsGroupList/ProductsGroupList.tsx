@@ -15,7 +15,6 @@ export const ProductsGroupList: FC<IProps> = ({
   categoryId,
   className
 }) => {
-  console.log('items', items)
   const setActiveCategory = useCategoryStore((state) => state.setActiveId)
   const intersectionRef = useRef<HTMLDivElement>(null)
   const intersection = useIntersection(intersectionRef, {
@@ -42,8 +41,7 @@ export const ProductsGroupList: FC<IProps> = ({
             id={product.id}
             name={product.name}
             imageUrl={product.imageUrl}
-            price={3}
-            // price={product?.items[0]?.price}
+            price={product?.items[0]?.price}
             ingredients={product.ingredients}
           />
         ))}
