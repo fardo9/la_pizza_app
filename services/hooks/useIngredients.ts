@@ -10,5 +10,5 @@ export const useIngredients = () => {
     staleTime: 1000 * 60 * 10
   })
 
-  return { ingredients: data, isLoading, isError, error }
+  return { ingredients: data, isLoadingIngredients: isLoading, isError, error }
 }

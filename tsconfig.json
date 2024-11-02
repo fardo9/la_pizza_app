@@ -18,8 +18,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": ["./*"],
+      "@components/*": ["./shared/components/*"],
+      "@utils/*": ["./shared/lib/*"],
+      "@ui/*": ["./shared/components/ui/*"],
+      "@lib/*": ["./shared/lib/*"],
+      "@hooks/*": ["./shared/hooks/*"],
+      "@constants/*": ["./shared/constants/*"],
+      "@store/*": ["./shared/store/*"],
+      "@providers/*": ["./provider"]
+    },
+    "target": "ES2017"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
