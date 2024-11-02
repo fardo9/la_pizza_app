@@ -3,13 +3,9 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const { id } = params
-
-  if (!id || isNaN(Number(id))) {
-    return NextResponse.json({ message: 'Invalid product ID' }, { status: 400 })
-  }
+  const { id } = await context.params
 
   try {
     const product = await prisma.product.findFirst({
