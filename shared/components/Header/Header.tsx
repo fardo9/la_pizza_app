@@ -5,8 +5,9 @@ import Image from 'next/image'
 import { User } from 'lucide-react'
 import { Button } from '../ui'
 import { IProps } from '@/app/types'
-import { CartButton, Container, SearchInput } from '..'
+import { Container, SearchInput } from '..'
 import Link from 'next/link'
+import { CartButton } from '../Cart'
 
 export const Header: React.FC<IProps> = ({ className }) => {
   return (
@@ -33,9 +34,7 @@ export const Header: React.FC<IProps> = ({ className }) => {
             <User size={16} /> Log In
           </Button>
 
-          {/* <CartDrawer> */}
           <CartButton />
-          {/* </CartDrawer> */}
         </div>
       </Container>
     </header>

@@ -1,4 +1,4 @@
-import { IVariant } from "@/@types/base"
+import { IVariant } from '@/@types/base'
 
 export enum PizzaType {
   Traditional = 1,

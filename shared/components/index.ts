@@ -17,4 +17,4 @@ export { ChoosePizzaForm } from '@/shared/components/modal/ChoosePizzaForm/Choos
 export { ChooseProductModal } from '@/shared/components/modal/ChooseProductModal'
 export { GroupVariants } from '@/shared/components/GroupVariants/GroupVariants'
 export { Ingredients } from '@/shared/components/Ingredients/Ingredients'
-export { CartButton } from '@/shared/components/CartButton/CartButton'
+export * as Cart from '@/shared/components/Cart'

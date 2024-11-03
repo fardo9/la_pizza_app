@@ -35,15 +35,15 @@ export interface IReturnFilterProps extends IFilters {
 }
 /** EOF Interface for hook useFilter */
 
-/** BEGIN ChoosePizzaForm Component Props */
+/** BEGIN Interface for a ChoosePizzaForm Component */
 export interface IChoosePizzaFormProps extends IProps {
   product: ProductWithRelations
   isLoading?: boolean
   onSubmit?: VoidFunction
 }
-/** EOF ChoosePizzaForm Component Props */
+/** EOF Interface for a ChoosePizzaForm Component */
 
-/** BEGIN Group Variant Component Props */
+/** BEGIN Interface for a Group Variant Component Props */
 export interface IVariant<T> {
   name: string
   value: T
@@ -56,4 +56,82 @@ export interface IVariantsProps<T> extends IProps {
   value?: T
 }
 
-/** EOF Group Variant Component Props */
+/** EOF Interface for a Group Variant Component Props */
+
+/** Begin Interface for Component ProductImage */
+export interface IProductImageProps<T> extends IProps {
+  imageUrl?: string
+  size: T
+  alt?: string
+  isVariantExist?: boolean
+}
+/** EOF Interface for Component ProductImage */
+
+/** Begin Interface for Component Cart */
+
+export interface ICountButtonProps {
+  value?: number
+  size?: 'sm' | 'lg'
+  onClick?: (type: 'plus' | 'minus') => void
+  className?: string
+}
+
+export interface IconButtonProps {
+  size?: ICountButtonProps['size']
+  disabled?: boolean
+  type?: 'plus' | 'minus'
+  onClick?: () => void
+}
+
+/** EOF Interface for Component Cart */
+
+export interface ICartItemProps {
+  id: number
+  imageUrl: string
+  details: string
+  name: string
+  price: number
+  quantity: number
+  disabled?: boolean
+}
+
+/** Begin Interface for Component Cart */
+
+/** Begin Interface for Component Cart Item */
+export interface ICartItemProps {
+  id: number
+  imageUrl: string
+  details: string
+  name: string
+  price: number
+  quantity: number
+  disabled?: boolean
+}
+
+export interface IItemsProps extends ICartItemProps {
+  onClickCountButton?: (type: 'plus' | 'minus') => void
+  onClickRemove?: () => void
+  className?: string
+}
+/** EOF Interface for Component Cart Item */
+
+/** Begin Interface for Component Cart Item Details */
+
+export interface ICartItemInfoProps {
+  name: string
+  details: string
+  className?: string
+}
+
+export interface ICartItemDetailsPriceProps {
+  value: number
+  className?: string
+}
+
+export interface ICartItemDetailsImageProps {
+  src: string
+  className?: string
+}
+/** EOF Interface for Component Cart Item Details */
+
+/** EOF Interface for Component Cart */

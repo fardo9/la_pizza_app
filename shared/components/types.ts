@@ -28,13 +28,6 @@ export interface ICheckboxFilterGroupProps {
   name?: string
 }
 
-export interface IProductImageProps<T> extends IProps {
-  imageUrl?: string
-  size: T
-  alt?: string
-  isVariantExist?: boolean
-}
-
 export interface IProductsGroupListProps {
   title: string
   items: any[]

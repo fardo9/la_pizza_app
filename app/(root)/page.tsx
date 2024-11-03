@@ -1,13 +1,13 @@
 import React from 'react'
 import { cn } from '@/shared/lib/utils'
+import { prisma } from '@/prisma/prisma-client'
 import {
   Container,
   Title,
   FilterProducts,
   TopBar,
   ProductsGroupList
-} from '@components/index'
-import { prisma } from '@/prisma/prisma-client'
+} from '@/shared/components'
 
 const Home = async () => {
   // const { categories } = useCategories()

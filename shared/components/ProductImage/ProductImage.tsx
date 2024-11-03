@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { cn } from '../../lib/utils'
-import { IProductImageProps } from '../types'
+import { IProductImageProps } from '@/@types/base'
 
-export const ProductImage: FC<IProductImageProps> = ({
+export const ProductImage: FC<IProductImageProps<number>> = ({
   imageUrl,
   size = 30,
   alt, // change this props to another name

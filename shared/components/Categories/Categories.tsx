@@ -6,9 +6,8 @@ import Link from 'next/link'
 import { Skeleton } from '../ui/skeleton'
 import { cn } from '@/shared/lib/utils'
 import { IProps } from '@components/ProductCard/types'
-import { useCategoryStore } from '@store/category'
-import { CategortWithRelations } from '@/@types/prisma'
 import { Category } from '@prisma/client'
+import { useCategoryStore } from '@/shared/store/category'
 
 interface ICatogories extends IProps {
   items?: Category[]
